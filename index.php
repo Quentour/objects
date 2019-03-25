@@ -9,20 +9,20 @@
 
 	//attributes
 		public function Info(){
-			echo $this->$nom;
-			echo $this->$prenom;
-			echo $this->$adresse;
-			echo $this->$dateDeNaissance;
+			echo $this->nom."<br>";
+			echo $this->prenom."<br>";
+			echo $this->adresse."<br>";
+			echo $this->dateDeNaissance."<br>";
 		}
 
 		public function ChangeAdresse($change){
-			$this->$adresse=$change;
-			echo "l'adresse est maintenant".$adresse;
+			$this->adresse=$change;
+			echo "l'adresse est maintenant ".$this->adresse;
 
 		}
 
 		public function Age(){
-			echo 2019-$this->dateDeNaissance;
+			echo floor(abs((strtotime(date("Y-m-d"))- strtotime($this->dateDeNaissance)) / (24*60*60*365)));
 
 
 		}
@@ -34,8 +34,10 @@ $toto= new Personne();
 $toto->nom="jesaipa";
 $toto->prenom="toto";
 $toto->adresse="quelque part";
-$toto->dateDeNaissance="1998";
+$toto->dateDeNaissance="1998-04-25";
 
-print_r ($toto);
+$toto->Info();
+
+$toto->ChangeAdresse("autre part");
 echo "<br>Age:";
 echo $toto->Age();
